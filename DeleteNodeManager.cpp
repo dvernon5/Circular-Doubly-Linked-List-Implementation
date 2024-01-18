@@ -41,3 +41,24 @@ void DeleteNodeManager::DeleteBackNode(struct Node *current_node, NodePositionIn
   temp_ptr = nullptr;
   std::cout << "Your data " << node.data << " was successfully deleted.\n";
 }
+
+struct Node* DeleteNodeManager::DeleteNode(struct Node* current_node, NodePositionInfo& node) {
+  if (list_info.IsEmptyList(current_node)) {
+    std::cout << "List is empty\n";
+  } else {
+    const int BEGINNING_POSITION = 1;
+    int total_nodes = list_info.GetNumberOfNodes(current_node);
+    if (node.position == BEGINNING_POSITION) {
+      current_node = DeleteFirstNode(current_node, node, total_nodes);
+    } else if (node.position > 1 && node.position < total_nodes) {
+      DeleteBetweenNodes(current_node, node);
+    } else if (node.position == total_nodes) {
+      DeleteBackNode(current_node, node);
+    } else {
+      std::cout << "Invalid position! Please enter a number between " << BEGINNING_POSITION
+                << " and " << total_nodes << "\n";
+    }
+  }
+
+  return current_node;
+}
