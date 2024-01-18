@@ -40,54 +40,8 @@ void LinkedListManagement::InsertNode() {
   root_node = insert.InsertNode(root_node, node);
 }
 
-void LinkedListManagement::DeleteFirstNode(NodePositionInfo& node, int total_nodes) {
-  const int A_SINGLE_NODE = 1;
-  /* Case: There is only root node just delete it. */
-  if (total_nodes == A_SINGLE_NODE) {
-    delete root_node;
-    root_node = nullptr;
-  } else {
-    /* Case: There is more than one node. Must move root node to next node and manipulate links. */
-    struct Node* temp_ptr          = root_node;
-    root_node                      = root_node->next_node;
-    root_node->prev_node           = temp_ptr->prev_node;
-    temp_ptr->prev_node->next_node = root_node;
-    node.data                      = temp_ptr->data;
-    delete temp_ptr;
-    temp_ptr = nullptr;
-  }
-  std::cout << "Your data " << node.data << " was successfully deleted.\n";
-}
-
-void LinkedListManagement::DeleteNodeAtPosition(NodePositionInfo& node, int total_nodes) {
-  /* Case: Delete a Node at specific position. */
-  struct Node* ptr_node = root_node;
-  for (int current_node = 0; current_node < node.position - 1; ++current_node) {
-    ptr_node = ptr_node->next_node;
-  }
-  ptr_node->prev_node->next_node = ptr_node->next_node;
-  ptr_node->next_node->prev_node = ptr_node->prev_node;
-  node.data                      = ptr_node->data;
-  delete ptr_node;
-  ptr_node = nullptr;
-  std::cout << "Your data " << node.data << " was successfully deleted.\n";
-}
-
 void LinkedListManagement::DeleteNode(NodePositionInfo& node) {
-  if (list_info.IsEmpty(root_node)) {
-    std::cout << "List is empty\n";
-    return;
-  }
-  const int BEGINNING_POSITION = 1;
-  int total_nodes = list_info.GetNumberOfNodes(root_node);
-  if (node.position == BEGINNING_POSITION) {
-    DeleteFirstNode(node, total_nodes);
-  } else if (node.position > 1 && node.position <= total_nodes) {
-    DeleteNodeAtPosition(node, total_nodes);
-  } else {
-    std::cout << "Invalid position! Please enter a number between " << BEGINNING_POSITION
-              << " and " << total_nodes << "\n";
-  }
+ root_node = remove.DeleteNode(root_node, node);
 }
 
 void LinkedListManagement::PrintList(struct Node* ptr_node) {
