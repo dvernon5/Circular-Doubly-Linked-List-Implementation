@@ -79,6 +79,24 @@ void LinkedListManagement::InsertNode(NodePositionInfo& node) {
 }
 
 // TODO: Build Delete routines.
+void LinkedListManagement::DeleteFirstNode(NodePositionInfo& node, int total_nodes) {
+  const int A_SINGLE_NODE = 1;
+  /* Case: There is only root node just delete it. */
+  if (total_nodes == A_SINGLE_NODE) {
+    delete root_node;
+    root_node = nullptr;
+  } else {
+    /* Case: There is more than one node. Must move root node to next node and manipulate links. */
+    struct Node* temp_ptr          = root_node;
+    root_node                      = root_node->next_node;
+    root_node->prev_node           = temp_ptr->prev_node;
+    temp_ptr->prev_node->next_node = root_node;
+    node.data                      = temp_ptr->data;
+    delete temp_ptr;
+    temp_ptr                       = nullptr;
+  }
+  std::cout << "Your data " << node.data << " was successfully deleted.\n";
+}
 
 void LinkedListManagement::PrintList(struct Node* ptr_node) {
   if (list_info.IsEmpty(ptr_node)) {
