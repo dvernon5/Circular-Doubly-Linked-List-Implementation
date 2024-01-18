@@ -8,7 +8,7 @@ class DeleteNodeManager {
   public:
     DeleteNodeManager            () = default;
     struct Node* DeleteFirstNode (struct Node* current_node, NodePositionInfo& node, int total_nodes);
-    void DeleteNodeAtPosition    (struct Node* current_node, NodePositionInfo& node);
+    void DeleteBetweenNodes      (struct Node* current_node, NodePositionInfo& node);
     void DeleteBackNode          (struct Node* current_node, NodePositionInfo& node);
     struct Node* DeleteNode      (struct Node* current_node, NodePositionInfo& node);
   
