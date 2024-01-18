@@ -1,28 +1,12 @@
 #include "LinkedListManagement.h"
 #include <iostream>
 
-namespace InputValidation {
-  void ClearInputBuffer() {
-    std::cin.clear();
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-  }
-
-  int GetValidatedInput(int user_input) {
-    while (!(std::cin >> user_input)) {
-      std::cout << "Invalid type. Please enter a number.\n";
-      ClearInputBuffer();
-    }
-    ClearInputBuffer();
-    return user_input;
-  }
-} using namespace InputValidation;
-
 LinkedListManagement::LinkedListManagement() {
   root_node = nullptr;
 }
 
 LinkedListManagement::~LinkedListManagement() {
-  if (list_info.IsEmpty(root_node)) {
+  if (list_info.IsEmptyList(root_node)) {
     std::cout << "List is empty.";
     return;
   }
@@ -40,20 +24,21 @@ void LinkedListManagement::InsertNode() {
   root_node = insert.InsertNode(root_node, node);
 }
 
-void LinkedListManagement::DeleteNode(NodePositionInfo& node) {
- root_node = remove.DeleteNode(root_node, node);
+void LinkedListManagement::DeleteNode() {
+  root_node = remove.DeleteNode(root_node, node);
 }
 
-void LinkedListManagement::PrintList(struct Node* ptr_node) {
-  if (list_info.IsEmpty(ptr_node)) {
+void LinkedListManagement::PrintList() {
+  if (list_info.IsEmptyList(root_node)) {
     std::cout << "List is empty.";
     return;
   }
+  struct Node* current_node = root_node;
   do {
-    std::cout << ptr_node->data << "<-->";
-    ptr_node = ptr_node->next_node;
-  } while (ptr_node->next_node != root_node);
-  std::cout << ptr_node->data << "<-->" << root_node->data << "\n";
+    std::cout << current_node->data << "<-->";
+    current_node = current_node->next_node;
+  } while (current_node->next_node != root_node);
+  std::cout << current_node->data << "<-->" << root_node->data << "\n";
 }
 
 void LinkedListManagement::PrintMenu() {
@@ -97,3 +82,4 @@ void LinkedListManagement::LaunchLinkedListManagement() {
     }
   } while (selection != 4);
 }
+
