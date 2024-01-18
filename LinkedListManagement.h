@@ -7,7 +7,7 @@
 class LinkedListManagement {
   public:
     LinkedListManagement();
-    void InsertNode(NodePositionInfo& node);
+    void InsertNode();
     void DeleteFirstNode(NodePositionInfo& node, int total_nodes);
     void DeleteNodeAtPosition(NodePositionInfo& node, int total_nodes);
     void DeleteNode(NodePositionInfo& node);
