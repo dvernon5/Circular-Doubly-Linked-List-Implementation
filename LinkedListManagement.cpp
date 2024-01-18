@@ -72,15 +72,8 @@ void LinkedListManagement::LaunchLinkedListManagement() {
     selection = GetValidatedInput(selection);
     switch (selection) {
       case 1: {
-        std::cout << "\nADD NODE: \n---------\n";
-        std::cout << "Enter a number: ";
-        node.data = GetValidatedInput(node.data);
-        if (root_node != nullptr) {
-          int total_nodes = list_info.GetNumberOfNodes(root_node);
-          std::cout << "Enter a position between 1 and " << total_nodes + 1 << " to insert node: ";
-          node.position   = GetValidatedInput(node.position);
-        }
-        InsertANode(node);
+        node = request.InsertRequest(root_node);
+        InsertNode();
         break;
       }
       case 2: {
