@@ -69,7 +69,7 @@ void LinkedListManagement::LaunchLinkedListManagement() {
   int selection{0};
   do {
     PrintMenu();
-    selection = GetValidatedInput(selection);
+    selection = request.GetValidatedUserInput(selection);
     switch (selection) {
       case 1: {
         node = request.InsertRequest(root_node);
@@ -81,16 +81,19 @@ void LinkedListManagement::LaunchLinkedListManagement() {
         DeleteNode();
         break;
       }
-      case 3:
+      case 3: {
         std::cout << "\nLIST ALL NODES: \n----------------\n";
-        PrintList(root_node);
+        PrintList();
         break;
-      case 4:
+      }
+      case 4: {
         std::cout << "\nThank you... Goodbye!\n";
         break;
-      default:
+      }
+      default: {
         std::cout << "Invalid selection. Try again\n";
         break;
+      }
     }
   } while (selection != 4);
 }
