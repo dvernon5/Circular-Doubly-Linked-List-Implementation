@@ -63,3 +63,24 @@ struct Node* InsertNodeManager::InsertAtBackNode(struct Node* ptr_node, NodePosi
   
   return ptr_node;
 }
+
+struct Node* InsertNodeManager::InsertNode(struct Node* ptr_node, NodePositionInfo& node) {
+  const int BEGINNING_POSITION = 1;
+  const int NODES_TO_ADD       = 1;
+  int total_nodes = list_info.GetNumberOfNodes(ptr_node);
+  std::cout << "numbers of nodes = " << total_nodes << "\n";
+  if (list_info.IsEmptyList(ptr_node)) {
+    ptr_node = InsertRootNode(ptr_node, node);
+  } else if (node.position == BEGINNING_POSITION) {
+    ptr_node = InsertAtFirstNode(ptr_node, node);
+  } else if (node.position > BEGINNING_POSITION && node.position <= total_nodes) {
+    ptr_node = InsertNodeAtPosition(ptr_node, node);
+  } else if (node.position == total_nodes + NODES_TO_ADD) {
+    ptr_node = InsertAtBackNode(ptr_node, node);
+  } else {
+    std::cout << "Invalid position! Please enter a number between "
+              << BEGINNING_POSITION << " and " << total_nodes + NODES_TO_ADD << "\n";
+  }
+  
+  return ptr_node;
+}
