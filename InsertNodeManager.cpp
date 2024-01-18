@@ -51,3 +51,15 @@ struct Node* InsertNodeManager::InsertNodeAtPosition(struct Node* ptr_node, Node
   
   return ptr_node;
 }
+
+struct Node* InsertNodeManager::InsertAtBackNode(struct Node* ptr_node, NodePositionInfo &node) {
+  struct Node* new_node          = new Node;
+  list_info.AllocationWarningMessage(new_node);
+  new_node->prev_node            = ptr_node->prev_node;
+  new_node->data                 = node.data;
+  new_node->next_node            = ptr_node->prev_node->next_node;
+  ptr_node->prev_node->next_node = new_node;
+  ptr_node->prev_node            = new_node;
+  
+  return ptr_node;
+}
