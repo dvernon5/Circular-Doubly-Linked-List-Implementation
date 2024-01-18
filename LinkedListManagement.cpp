@@ -123,6 +123,23 @@ void LinkedListManagement::PrintList(struct Node* ptr_node) {
   std::cout << ptr_node->data << "<-->" << root_node->data << "\n";
 }
 
+void LinkedListManagement::DeleteNode(NodePositionInfo& node) {
+  if (list_info.IsEmpty(root_node)) {
+    std::cout << "List is empty\n";
+    return;
+  }
+  const int BEGINNING_POSITION = 1;
+  int total_nodes = list_info.GetNumberOfNodes(root_node);
+  if (node.position == BEGINNING_POSITION) {
+    DeleteFirstNode(node, total_nodes);
+  } else if (node.position > 1 && node.position <= total_nodes) {
+    DeleteNodeAtPosition(node, total_nodes);
+  } else {
+    std::cout << "Invalid position! Please enter a number between " << BEGINNING_POSITION
+              << " and " << total_nodes << "\n";
+  }
+}
+
 void LinkedListManagement::PrintMenu() {
   std::cout << "\nWelcome to Linked List Management System.\n";
   std::cout << "1. Insert\n";
