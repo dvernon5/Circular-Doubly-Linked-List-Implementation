@@ -29,3 +29,27 @@ struct NodePositionInfo RequestManager::InsertRequest(struct Node* current_node)
   
   return node;
 }
+
+struct NodePositionInfo RequestManager::DeleteRequest(struct Node* current_node) {
+  std::cout << "\nDELETE NODE: \n------------\n";
+  int total_nodes = list_info.GetNumberOfNodes(current_node);
+  switch (total_nodes) {
+    case 0: {
+      // List is empty.
+      break;
+    }
+    case 1: {
+      // Case: Only one node available. Prompt user to enter 1.
+      std::cout << "Please enter the number 1: ";
+      node.position = GetValidatedUserInput(node.position);
+      break;
+    }
+    default: {
+      std::cout << "Enter a position between 1 and " << total_nodes << " to delete node: ";
+      node.position = GetValidatedUserInput(node.position);
+      break;
+    }
+  }
+  
+  return node;
+}
