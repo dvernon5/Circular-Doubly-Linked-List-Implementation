@@ -111,18 +111,6 @@ void LinkedListManagement::DeleteNodeAtPosition(NodePositionInfo& node, int tota
   std::cout << "Your data " << node.data << " was successfully deleted.\n";
 }
 
-void LinkedListManagement::PrintList(struct Node* ptr_node) {
-  if (list_info.IsEmpty(ptr_node)) {
-    std::cout << "List is empty.";
-    return;
-  }
-  do {
-    std::cout << ptr_node->data << "<-->";
-    ptr_node = ptr_node->next_node;
-  } while (ptr_node->next_node != root_node);
-  std::cout << ptr_node->data << "<-->" << root_node->data << "\n";
-}
-
 void LinkedListManagement::DeleteNode(NodePositionInfo& node) {
   if (list_info.IsEmpty(root_node)) {
     std::cout << "List is empty\n";
@@ -138,6 +126,18 @@ void LinkedListManagement::DeleteNode(NodePositionInfo& node) {
     std::cout << "Invalid position! Please enter a number between " << BEGINNING_POSITION
               << " and " << total_nodes << "\n";
   }
+}
+
+void LinkedListManagement::PrintList(struct Node* ptr_node) {
+  if (list_info.IsEmpty(ptr_node)) {
+    std::cout << "List is empty.";
+    return;
+  }
+  do {
+    std::cout << ptr_node->data << "<-->";
+    ptr_node = ptr_node->next_node;
+  } while (ptr_node->next_node != root_node);
+  std::cout << ptr_node->data << "<-->" << root_node->data << "\n";
 }
 
 void LinkedListManagement::PrintMenu() {
