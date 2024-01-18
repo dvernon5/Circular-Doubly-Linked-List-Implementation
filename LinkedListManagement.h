@@ -8,9 +8,7 @@ class LinkedListManagement {
   public:
     LinkedListManagement();
     void InsertNode();
-    void DeleteFirstNode(NodePositionInfo& node, int total_nodes);
-    void DeleteNodeAtPosition(NodePositionInfo& node, int total_nodes);
-    void DeleteNode(NodePositionInfo& node);
+    void DeleteNode();
     void PrintList(struct Node* ptr_node);
     void PrintMenu();
     void LaunchLinkedListManagement();
