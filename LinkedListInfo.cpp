@@ -11,12 +11,8 @@ void LinkedListInfo::AllocationWarningMessage(struct Node* ptr_node) {
   }
 }
 
-bool LinkedListInfo::IsEmpty(struct Node* ptr_node) {
-  if (ptr_node == nullptr) {
-    return true;
-  }
-  
-  return false;
+bool LinkedListInfo::IsEmptyList(struct Node* current_node) {
+  return current_node == nullptr;
 }
 
 int LinkedListInfo::GetNumberOfNodes(struct Node* ptr_node) {
