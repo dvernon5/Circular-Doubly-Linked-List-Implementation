@@ -82,4 +82,3 @@ void LinkedListManagement::LaunchLinkedListManagement() {
     }
   } while (selection != 4);
 }
-
