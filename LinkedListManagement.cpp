@@ -164,11 +164,21 @@ void LinkedListManagement::LaunchLinkedListManagement() {
           std::cout << "Enter a position between 1 and " << total_nodes + 1 << " to insert node: ";
           node.position   = GetValidatedInput(node.position);
         }
-        InsertNode(node);
+        InsertANode(node);
         break;
       }
       case 2: {
-       // TODO: Set up delete functionality. 
+        std::cout << "\nDELETE NODE: \n------------\n";
+        int total_nodes = list_info.GetNumberOfNodes(root_node);
+        if (total_nodes == 1) {
+          // Case: Only one node available. Prompt user to enter 1.
+          std::cout << "Please enter the number 1: ";
+        } else {
+          // Case: Multiple nodes available. Prompt user to enter a number between 1 and total nodes.
+          std::cout << "Enter a position between 1 and " << total_nodes << " to delete node: ";
+        }
+        node.position = GetValidatedInput(node.position);
+        DeleteNode(node);
         break;
       }
       case 3:
