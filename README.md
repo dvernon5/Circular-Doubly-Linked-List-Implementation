@@ -13,5 +13,5 @@ Welcome to the Circular Doubly Linked List project! This data structure is a var
    2. **Delete from the End** - Deleting from the end removes the last node in the list. The pointers are adjusted to keep the circular and doubly linked list intact.
    3. **Delete from a Specific Position** - You can delete a node from the circular doubly linked list at a specified position. the position is a positive integer indicating the index of the node to be removed.
   
-3. ### Print Circular Doubly Linked List
+3. #### Print Circular Doubly Linked List
    1. **Print List** - This function prints the values of the circular doubly linked list in order, starting from the first node and traversing the circular structure.
