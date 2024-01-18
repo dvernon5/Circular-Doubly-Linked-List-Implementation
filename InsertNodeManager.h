@@ -9,7 +9,7 @@ class InsertNodeManager {
     InsertNodeManager                 () = default;
     struct Node* InsertRootNode       (struct Node* ptr_node, NodePositionInfo& node);
     struct Node* InsertAtFirstNode    (struct Node* ptr_node, NodePositionInfo& node);
-    struct Node* InsertNodeAtPosition (struct Node* ptr_node, NodePositionInfo& node);
+    struct Node* InsertBetweenNodes   (struct Node* ptr_node, NodePositionInfo& node);
     struct Node* InsertAtBackNode     (struct Node* ptr_node, NodePositionInfo& node);
     struct Node* InsertNode           (struct Node* ptr_node, NodePositionInfo& node);
   
