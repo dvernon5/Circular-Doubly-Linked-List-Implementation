@@ -14,3 +14,18 @@ struct Node* InsertNodeManager::InsertRootNode(struct Node* ptr_node, NodePositi
   
   return ptr_node;
 }
+
+struct Node* InsertNodeManager::InsertAtFirstNode(struct Node* ptr_node, NodePositionInfo& node) {
+  struct Node* new_node = new Node;
+  list_info.AllocationWarningMessage(new_node);
+  new_node->prev_node             = ptr_node->prev_node;
+  new_node->data                  = node.data;
+  new_node->next_node             = ptr_node;
+  new_node->prev_node->next_node  = new_node;
+  ptr_node->prev_node             = new_node;
+  ptr_node                        = new_node;
+  std::cout << "Your data " << node.data << " was successfully added at "
+            << "Position "  << node.position << ".\n";
+  
+  return ptr_node;
+}
