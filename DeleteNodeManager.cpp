@@ -31,3 +31,13 @@ void DeleteNodeManager::DeleteBetweenNodes(struct Node* current_node, NodePositi
   current_node = nullptr;
   std::cout << "Your data " << node.data << " was successfully deleted.\n";
 }
+
+void DeleteNodeManager::DeleteBackNode(struct Node *current_node, NodePositionInfo &node) {
+  // Case: Delete the last node.
+  struct Node* temp_ptr = current_node->prev_node;
+  temp_ptr->prev_node->next_node = current_node;
+  current_node->prev_node = current_node->prev_node->prev_node;
+  delete temp_ptr;
+  temp_ptr = nullptr;
+  std::cout << "Your data " << node.data << " was successfully deleted.\n";
+}
