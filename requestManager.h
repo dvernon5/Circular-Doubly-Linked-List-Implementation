@@ -6,9 +6,9 @@
 
 class RequestManager {
   public:
+    int GetValidatedUserInput(int user_input);
     struct NodePositionInfo InsertRequest (struct Node* root_node);
     struct NodePositionInfo DeleteRequest (struct Node* root_node);
-    int GetValidatedUserInput             (int user_input);
   
   private:
     NodePositionInfo node;
