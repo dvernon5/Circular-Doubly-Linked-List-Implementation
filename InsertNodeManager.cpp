@@ -30,7 +30,7 @@ struct Node* InsertNodeManager::InsertAtFirstNode(struct Node* ptr_node, NodePos
   return ptr_node;
 }
 
-struct Node* InsertNodeManager::InsertNodeAtPosition(struct Node* ptr_node, NodePositionInfo& node) {
+struct Node* InsertNodeManager::InsertBetweenNodes(struct Node* ptr_node, NodePositionInfo& node) {
   const int POSITION_DECREMENT = 1;
   struct Node* current_node    = ptr_node;
   for (size_t current_position = 0;
@@ -68,13 +68,12 @@ struct Node* InsertNodeManager::InsertNode(struct Node* ptr_node, NodePositionIn
   const int BEGINNING_POSITION = 1;
   const int NODES_TO_ADD       = 1;
   int total_nodes = list_info.GetNumberOfNodes(ptr_node);
-  std::cout << "numbers of nodes = " << total_nodes << "\n";
   if (list_info.IsEmptyList(ptr_node)) {
     ptr_node = InsertRootNode(ptr_node, node);
   } else if (node.position == BEGINNING_POSITION) {
     ptr_node = InsertAtFirstNode(ptr_node, node);
   } else if (node.position > BEGINNING_POSITION && node.position <= total_nodes) {
-    ptr_node = InsertNodeAtPosition(ptr_node, node);
+    ptr_node = InsertBetweenNodes(ptr_node, node);
   } else if (node.position == total_nodes + NODES_TO_ADD) {
     ptr_node = InsertAtBackNode(ptr_node, node);
   } else {
