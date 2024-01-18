@@ -2,11 +2,7 @@
 #include <iostream>
 
 bool LinkedListInfo::IsAllocationError(struct Node* ptr_node) {
-  if (ptr_node == nullptr) {
-    return true;
-  }
-  
-  return false;
+  return current_node == nullptr;
 }
 
 void LinkedListInfo::AllocationWarningMessage(struct Node* ptr_node) {
