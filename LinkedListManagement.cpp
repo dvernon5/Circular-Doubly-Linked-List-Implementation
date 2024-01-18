@@ -20,6 +20,22 @@ namespace InputValidation {
 LinkedListManagement::LinkedListManagement() {
   root_node = nullptr;
 }
+
+LinkedListManagement::~LinkedListManagement() {
+  if (list_info.IsEmpty(root_node)) {
+    std::cout << "List is empty.";
+    return;
+  }
+  struct Node* current_node = root_node->prev_node;
+  while (current_node != root_node) {
+    struct Node* temp_ptr = current_node;
+    current_node = current_node->prev_node;
+    delete temp_ptr;
+  }
+  delete root_node;
+  root_node = nullptr;
+}
+
 void LinkedListManagement::InsertRootNode() {
   root_node             = new Node;
   list_info.AllocationWarningMessage(root_node);
