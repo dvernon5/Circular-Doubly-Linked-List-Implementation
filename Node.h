@@ -1,5 +1,6 @@
 #ifndef Node_h
 #define Node_h
+
 struct Node {
   struct Node* prev_node;
   int data;
