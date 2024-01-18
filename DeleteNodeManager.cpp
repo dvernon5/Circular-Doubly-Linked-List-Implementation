@@ -18,3 +18,16 @@ struct Node* DeleteNodeManager::DeleteFirstNode(struct Node* current_node, NodeP
   
   return current_node;
 }
+
+void DeleteNodeManager::DeleteBetweenNodes(struct Node* current_node, NodePositionInfo& node) {
+  /* Case: Delete a Node at specific position. */
+  for (int current_position = 0; current_position < node.position - 1; ++current_position) {
+    current_node = current_node->next_node;
+  }
+  current_node->prev_node->next_node = current_node->next_node;
+  current_node->next_node->prev_node = current_node->prev_node;
+  node.data = current_node->data;
+  delete current_node;
+  current_node = nullptr;
+  std::cout << "Your data " << node.data << " was successfully deleted.\n";
+}
