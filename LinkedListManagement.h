@@ -11,9 +11,13 @@ class LinkedListManagement {
     void InsertAtFirstNode(NodePositionInfo& node);
     void InsertNodeAtPosition(NodePositionInfo& node, int total_nodes);
     void InsertNode(NodePositionInfo& node);
+    void DeleteFirstNode(NodePositionInfo& node, int total_nodes);
+    void DeleteNodeAtPosition(NodePositionInfo& node, int total_nodes);
+    void DeleteNode(NodePositionInfo& node);
     void PrintList(struct Node* ptr_node);
     void PrintMenu();
     void LaunchLinkedListManagement();
+    ~LinkedListManagement();
 
   private:
     Node* root_node;
