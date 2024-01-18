@@ -9,7 +9,7 @@ class LinkedListManagement {
     LinkedListManagement();
     void InsertNode();
     void DeleteNode();
-    void PrintList(struct Node* current_node);
+    void PrintList();
     void PrintMenu();
     void LaunchLinkedListManagement();
     ~LinkedListManagement();
