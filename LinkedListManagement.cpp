@@ -36,62 +36,8 @@ LinkedListManagement::~LinkedListManagement() {
   root_node = nullptr;
 }
 
-void LinkedListManagement::InsertRootNode() {
-  root_node             = new Node;
-  list_info.AllocationWarningMessage(root_node);
-  root_node->prev_node  = root_node;
-  root_node->data       = node.data;
-  root_node->next_node  = root_node;
-  std::cout << "Your data " << node.data << " was successfully added.\n";
-}
-
-void LinkedListManagement::InsertAtFirstNode(NodePositionInfo& node) {
-  struct Node* new_node = new Node;
-  list_info.AllocationWarningMessage(new_node);
-  new_node->prev_node             = root_node->prev_node;
-  new_node->data                  = node.data;
-  new_node->next_node             = root_node;
-  new_node->prev_node->next_node  = new_node;
-  root_node->prev_node            = new_node;
-  root_node                       = new_node;
-  std::cout << "Your data " << node.data << " was successfully added.\n";
-}
-
-void LinkedListManagement::InsertNodeAtPosition(NodePositionInfo& node, int total_nodes) {
-  struct Node* ptr_node = root_node;
-  for (size_t position  = 0; position < node.position - 1 && ptr_node->next_node != root_node; ++position) {
-    ptr_node  = ptr_node->next_node;
-  }
-  struct Node* new_node   = new Node;
-  list_info.AllocationWarningMessage(new_node);
-  if (node.position == total_nodes + 1) {
-    new_node->prev_node   = ptr_node;
-    new_node->data        = node.data;
-    new_node->next_node   = root_node;
-    ptr_node->next_node   = new_node;
-    root_node->prev_node  = new_node;
-  } else {
-    new_node->prev_node            = ptr_node->prev_node;
-    new_node->data                 = node.data;
-    new_node->next_node            = ptr_node;
-    ptr_node->prev_node->next_node = new_node;
-    ptr_node->prev_node            = new_node;
-  }
-}
-
-void LinkedListManagement::InsertNode(NodePositionInfo& node) {
-  const int BEGINNING_POSITION = 1;
-  int total_nodes = list_info.GetNumberOfNodes(root_node);
-  if (root_node == nullptr) {
-    InsertRootNode();
-  } else if (node.position == BEGINNING_POSITION) {
-    InsertAtFirstNode(node);
-  } else if (node.position > BEGINNING_POSITION && node.position <= total_nodes + 1) {
-    InsertNodeAtPosition(node, total_nodes);
-  } else {
-    std::cout << "Invalid position! Please enter a number between " << BEGINNING_POSITION
-              << " and " << total_nodes + 1 << "\n";
-  }
+void LinkedListManagement::InsertNode() {
+  root_node = insert.InsertNode(root_node, node);
 }
 
 void LinkedListManagement::DeleteFirstNode(NodePositionInfo& node, int total_nodes) {
