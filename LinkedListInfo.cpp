@@ -1,12 +1,12 @@
 #include "LinkedListInfo.h"
 #include <iostream>
 
-bool LinkedListInfo::IsAllocationError(struct Node* ptr_node) {
+bool LinkedListInfo::IsAllocationError(struct Node* current_node) {
   return current_node == nullptr;
 }
 
-void LinkedListInfo::AllocationWarningMessage(struct Node* ptr_node) {
-  if (IsAllocationError(ptr_node)) {
+void LinkedListInfo::AllocationWarningMessage(struct Node* current_node) {
+  if (IsAllocationError(current_node)) {
     std::cerr << "Allocation error\n";
   }
 }
@@ -16,7 +16,7 @@ bool LinkedListInfo::IsEmptyList(struct Node* current_node) {
 }
 
 int LinkedListInfo::GetNumberOfNodes(struct Node* ptr_node) {
-  if (ptr_node == nullptr) {
+  if (IsEmptyList(ptr_node)) {
     return 0;
   }
   unsigned counter{0};
